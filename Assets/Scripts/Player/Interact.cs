@@ -99,14 +99,15 @@ public class Interact : MonoBehaviour
         if (path == null || path == Lastpath)
             return false;
 
+        //Debug only
         ClearLastPath();
         DebugNewPath(path);
-
         Lastpath = path;
 
         return true;
     }
 
+    //Debug only
     void ClearLastPath()
     {
         if (Lastpath == null)
@@ -118,6 +119,7 @@ public class Interact : MonoBehaviour
         }
     }
 
+    //Debug only
     void DebugNewPath(Path path)
     {
         foreach (Tile t in path.tiles)

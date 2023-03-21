@@ -74,9 +74,10 @@ public class Pathfinder : MonoBehaviour
     /// <returns></returns>
     private List<Tile> AdjacentTiles(Tile origin)
     {
+        const float HEXAGONAL_OFFSET = 1.75f;
         List<Tile> tiles = new List<Tile>();
-        Vector3 direction = Vector3.forward;
-        float rayLength = 50f;
+        Vector3 direction = Vector3.forward * (origin.GetComponent<MeshFilter>().sharedMesh.bounds.extents.x * HEXAGONAL_OFFSET);
+        float rayLength = 4f;
         float rayHeightOffset = 1f;
 
         //Rotate a raycast in 60 degree steps and find all adjacent tiles
@@ -92,8 +93,11 @@ public class Pathfinder : MonoBehaviour
                 if (hitTile.Occupied == false)
                     tiles.Add(hitTile);
             }
+
+            Debug.DrawRay(aboveTilePos, Vector3.down * rayLength, Color.blue);
         }
 
+        //Additionally add connected tiles such as ladders
         if (origin.connectedTile != null)
             tiles.Add(origin.connectedTile);
 

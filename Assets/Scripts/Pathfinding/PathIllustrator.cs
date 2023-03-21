@@ -27,13 +27,4 @@ public class PathIllustrator : MonoBehaviour
     {
         line.positionCount = 0;
     }
-
-    public void ClearText(List<Tile> tiles)
-    {
-        foreach (Tile tile in tiles)
-        {
-            tile.ClearText();
-        }
-    }
-
 }
