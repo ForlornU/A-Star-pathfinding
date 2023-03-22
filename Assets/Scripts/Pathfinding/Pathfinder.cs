@@ -46,20 +46,20 @@ public class Pathfinder : MonoBehaviour
                 return PathBetween(destination, origin);
             }
 
-            foreach (Tile adjacentTile in AdjacentTiles(currentTile))
+            foreach (Tile neighbor in NeighborTiles(currentTile))
             {
-                if(closedSet.Contains(adjacentTile))
+                if(closedSet.Contains(neighbor))
                     continue;
 
-                int costToNeighbor = currentTile.costFromOrigin + adjacentTile.terrainCost + Mathf.Clamp((int)Vector3.Distance(currentTile.transform.position, adjacentTile.transform.position), 1, 9999);
-                if (costToNeighbor < adjacentTile.costFromOrigin || !openSet.Contains(adjacentTile))
+                int costToNeighbor = currentTile.costFromOrigin + neighbor.terrainCost + Mathf.Clamp((int)Vector3.Distance(currentTile.transform.position, neighbor.transform.position), 1, 9999);
+                if (costToNeighbor < neighbor.costFromOrigin || !openSet.Contains(neighbor))
                 {
-                    adjacentTile.costFromOrigin = costToNeighbor;
-                    adjacentTile.costToDestination = (int)Vector3.Distance(destination.transform.position, adjacentTile.transform.position);
-                    adjacentTile.parent = currentTile;
+                    neighbor.costFromOrigin = costToNeighbor;
+                    neighbor.costToDestination = (int)Vector3.Distance(destination.transform.position, neighbor.transform.position);
+                    neighbor.parent = currentTile;
 
-                    if (!openSet.Contains(adjacentTile))
-                        openSet.Add(adjacentTile);
+                    if (!openSet.Contains(neighbor))
+                        openSet.Add(neighbor);
                 }
             }
         }
@@ -72,7 +72,7 @@ public class Pathfinder : MonoBehaviour
     /// </summary>
     /// <param name="origin"></param>
     /// <returns></returns>
-    private List<Tile> AdjacentTiles(Tile origin)
+    private List<Tile> NeighborTiles(Tile origin)
     {
         const float HEXAGONAL_OFFSET = 1.75f;
         List<Tile> tiles = new List<Tile>();

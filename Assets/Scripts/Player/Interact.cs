@@ -54,7 +54,7 @@ public class Interact : MonoBehaviour
         if (currentTile.occupyingCharacter.Moving)
             return;
 
-        currentTile.Highlight();
+        currentTile.Highlight(true);
 
         if (Input.GetMouseButtonDown(0))
             SelectCharacter();
@@ -65,7 +65,7 @@ public class Interact : MonoBehaviour
         if (currentTile == null  || currentTile.Occupied == false)
             return;
 
-        currentTile.ClearColor();
+        currentTile.Highlight(false);
         currentTile = null;
     }
 

@@ -17,8 +17,6 @@ public class Tile : MonoBehaviour
     GameObject highlight;
 
     [SerializeField]
-    bool debug;
-    [SerializeField]
     TMP_Text costText;
 
     public bool Occupied { get; set; } = false;
@@ -30,29 +28,18 @@ public class Tile : MonoBehaviour
     /// Changes color of the tile by activating child-objects of different colors
     /// </summary>
     /// <param name="col"></param>
-    public void Highlight()
+    public void Highlight(bool state)
     {
-        highlight.SetActive(true);
+        highlight.SetActive(state);
     }
 
     public void DebugCostText()
     {
-        if(debug)
-            costText.text = TotalCost.ToString();
+        costText.text = TotalCost.ToString();
     }
 
     public void ClearText()
     {
         costText.text = "";
-    }
-
-    /// <summary>
-    /// Deactivates all children, removing all color
-    /// </summary>
-    public void ClearColor()
-    {
-
-        highlight.SetActive(false);
-
     }
 }

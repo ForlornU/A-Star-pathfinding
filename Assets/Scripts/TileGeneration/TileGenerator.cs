@@ -32,14 +32,14 @@ public class TileGenerator : MonoBehaviour
                 position.x = transform.position.x + tileSize.x * x;
                 position.z = transform.position.z + tileSize.y * y;
 
-                position.z += OffsetUnevenRow(x, tileSize.y);
+                position.z += UnevenRowOffset(x, tileSize.y);
 
                 CreateTile(tile, position, new Vector2Int(x, y));
             }
         }
     }
 
-    float OffsetUnevenRow(float x, float y)
+    float UnevenRowOffset(float x, float y)
     {
         return x % 2 == 0 ? y / 2 : 0f;
     }
