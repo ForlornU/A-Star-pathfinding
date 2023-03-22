@@ -10,6 +10,8 @@ public class Interact : MonoBehaviour
     LayerMask interactMask;
 
     //Debug purposes only
+    [SerializeField]
+    bool debug;
     Path Lastpath;
 
     Camera mainCam;
@@ -100,10 +102,12 @@ public class Interact : MonoBehaviour
             return false;
 
         //Debug only
-        ClearLastPath();
-        DebugNewPath(path);
-        Lastpath = path;
-
+        if (debug)
+        {
+            ClearLastPath();
+            DebugNewPath(path);
+            Lastpath = path;
+        }
         return true;
     }
 
