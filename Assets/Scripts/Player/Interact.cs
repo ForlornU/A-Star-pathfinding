@@ -89,7 +89,6 @@ public class Interact : MonoBehaviour
                 GetComponent<AudioSource>().PlayOneShot(click);
                 selectedCharacter.StartMove(newPath);
                 selectedCharacter = null;
-                ClearLastPath();
             }
         }
     }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -30,7 +31,9 @@ public class Pathfinder : MonoBehaviour
         
         openSet.Add(origin);
         origin.costFromOrigin = 0;
-    
+
+        float tileDistance = origin.GetComponent<MeshFilter>().sharedMesh.bounds.extents.z * 2;
+        
         while (openSet.Count > 0)
         {
             openSet.Sort((x, y) => x.TotalCost.CompareTo(y.TotalCost));
@@ -49,12 +52,12 @@ public class Pathfinder : MonoBehaviour
             {
                 if(closedSet.Contains(neighbor))
                     continue;
-
-                int costToNeighbor = currentTile.costFromOrigin + neighbor.terrainCost + Mathf.Clamp((int)Vector3.Distance(currentTile.transform.position, neighbor.transform.position), 1, 9999);
+                
+                float costToNeighbor = currentTile.costFromOrigin + neighbor.terrainCost + tileDistance;
                 if (costToNeighbor < neighbor.costFromOrigin || !openSet.Contains(neighbor))
                 {
                     neighbor.costFromOrigin = costToNeighbor;
-                    neighbor.costToDestination = (int)Vector3.Distance(destination.transform.position, neighbor.transform.position);
+                    neighbor.costToDestination = Vector3.Distance(destination.transform.position, neighbor.transform.position);
                     neighbor.parent = currentTile;
 
                     if (!openSet.Contains(neighbor))
@@ -144,5 +147,4 @@ public class Pathfinder : MonoBehaviour
 
         return path;
     }
-
 }

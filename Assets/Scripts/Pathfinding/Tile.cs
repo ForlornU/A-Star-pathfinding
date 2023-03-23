@@ -8,10 +8,10 @@ public class Tile : MonoBehaviour
     public Tile connectedTile;
     public Character occupyingCharacter;
 
-    public int costFromOrigin = 0;
-    public int costToDestination = 0;
+    public float costFromOrigin = 0;
+    public float costToDestination = 0;
     public int terrainCost = 0;
-    public int TotalCost { get { return costFromOrigin + costToDestination + terrainCost; } }
+    public float TotalCost { get { return costFromOrigin + costToDestination + terrainCost; } }
     
     [SerializeField]
     GameObject highlight;
@@ -35,7 +35,7 @@ public class Tile : MonoBehaviour
 
     public void DebugCostText()
     {
-        costText.text = TotalCost.ToString();
+        costText.text = TotalCost.ToString("F1");
     }
 
     public void ClearText()

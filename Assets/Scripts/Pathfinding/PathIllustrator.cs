@@ -22,9 +22,4 @@ public class PathIllustrator : MonoBehaviour
             line.SetPosition(i, tileTransform.position.With(y: tileTransform.position.y + LineHeightOffset));
         }
     }
-    
-    public void Clear()
-    {
-        line.positionCount = 0;
-    }
 }
