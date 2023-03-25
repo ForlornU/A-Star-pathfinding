@@ -3,15 +3,25 @@ using UnityEngine;
 public class CameraControl : MonoBehaviour
 {
     public float speed = 8f;
+    Camera cam;
+
+    private void Start()
+    {
+        cam = GetComponent<Camera>();
+    }
 
     void Update()
     {
-        Vector3 input = GetInput().normalized;
-        input.y *= speed;
-
-        transform.Translate(input * speed * Time.deltaTime, Space.World);
+        UpdateCamera();
     }
-    
+
+    private void UpdateCamera()
+    {
+        Vector3 input = GetInput().normalized;
+        cam.fieldOfView = Mathf.Clamp(cam.fieldOfView + input.y * 2, 30, 110);
+        transform.Translate(input.Flat() * speed * Time.deltaTime, Space.World);
+    }
+
     private Vector3 GetInput()
     {
         Vector3 values = new Vector3();

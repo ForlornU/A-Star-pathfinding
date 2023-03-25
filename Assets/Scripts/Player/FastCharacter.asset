@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: FastCharacter
   m_EditorClassIdentifier: 
   MaxMove: 5
-  MoveSpeed: 0.01
+  MoveSpeed: 0.2

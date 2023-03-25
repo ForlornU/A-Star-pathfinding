@@ -45,6 +45,12 @@ public class Interact : MonoBehaviour
 
     private void InspectTile()
     {
+        if (Input.GetMouseButtonUp(1))
+        {
+            currentTile.ModifyCost();
+            return;
+        }
+
         if (currentTile.Occupied)
             InspectCharacter();
         else

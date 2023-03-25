@@ -20,8 +20,6 @@ public class Tile : MonoBehaviour
     TMP_Text costText;
 
     public bool Occupied { get; set; } = false;
-    public bool InFrontier { get; set; } = false;
-    public bool CanBeReached { get { return !Occupied && InFrontier; } }
     #endregion
 
     /// <summary>
@@ -31,6 +29,27 @@ public class Tile : MonoBehaviour
     public void Highlight(bool state)
     {
         highlight.SetActive(state);
+    }
+
+    public void ModifyCost()
+    {
+        switch (terrainCost)
+        {
+            case 0:
+                GetComponent<MeshRenderer>().material.color = new Color(0.45f, 0.23f, 0.15f);
+                terrainCost = 1;
+                break;
+            case 1:
+                GetComponent<MeshRenderer>().material.color = Color.red;
+                terrainCost = 2;
+                break;
+            case 2:
+                GetComponent<MeshRenderer>().material.color = new Color(0.42f, 0.38f, 0.38f);
+                terrainCost = 0;
+                break;
+            default:
+                break;
+        }
     }
 
     public void DebugCostText()
