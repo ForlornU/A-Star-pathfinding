@@ -45,6 +45,7 @@ public class Interact : MonoBehaviour
 
     private void InspectTile()
     {
+        //Alter cost by right clicking
         if (Input.GetMouseButtonUp(1))
         {
             currentTile.ModifyCost();
@@ -62,7 +63,7 @@ public class Interact : MonoBehaviour
         if (currentTile.occupyingCharacter.Moving)
             return;
 
-        currentTile.Highlight(true);
+        currentTile.Highlight();
 
         if (Input.GetMouseButtonDown(0))
             SelectCharacter();
@@ -73,7 +74,8 @@ public class Interact : MonoBehaviour
         if (currentTile == null  || currentTile.Occupied == false)
             return;
 
-        currentTile.Highlight(false);
+        //currentTile.ModifyCost(currentTile.terrainCost-1);//Reverses to previous cost and color after being highlighted
+        currentTile.ClearHighlight();
         currentTile = null;
     }
 

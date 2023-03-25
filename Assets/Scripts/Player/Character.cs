@@ -40,7 +40,7 @@ public class Character : MonoBehaviour
     IEnumerator MoveAlongPath(Path path)
     {
         const float MIN_DISTANCE = 0.05f;
-        const float TERRAIN_PENALTY = 0.3f;
+        const float TERRAIN_PENALTY = 0.5f;
 
         int currentStep = 0;
         int pathLength = path.tiles.Length-1;

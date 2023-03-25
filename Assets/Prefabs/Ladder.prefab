@@ -261,6 +261,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BottomTile
       objectReference: {fileID: 0}
+    - target: {fileID: 5811358152312713131, guid: 7727fe32e1259674296671ee825dad80,
+        type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7727fe32e1259674296671ee825dad80, type: 3}
 --- !u!114 &1048627399302488952 stripped
@@ -372,6 +377,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TopTile
+      objectReference: {fileID: 0}
+    - target: {fileID: 5811358152312713131, guid: 7727fe32e1259674296671ee825dad80,
+        type: 3}
+      propertyPath: m_text
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7727fe32e1259674296671ee825dad80, type: 3}
