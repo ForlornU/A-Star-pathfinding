@@ -103,7 +103,7 @@ public class Interact : MonoBehaviour
 
     bool RetrievePath(out Path path)
     {
-        path = pathfinder.FindPath(selectedCharacter, currentTile);
+        path = pathfinder.FindPath(selectedCharacter.characterTile, currentTile);
         
         if (path == null || path == Lastpath)
             return false;

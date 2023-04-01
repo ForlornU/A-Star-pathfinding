@@ -22,10 +22,8 @@ public class Pathfinder : MonoBehaviour
     /// in "currentFrontier" for later clearing
     /// </summary>
     /// <param name="character"></param>
-    public Path FindPath(Character character, Tile destination)
+    public Path FindPath(Tile origin, Tile destination)
     {
-        Tile origin = character.characterTile;
-
         List<Tile> openSet = new List<Tile>();
         List<Tile> closedSet = new List<Tile>();
         
